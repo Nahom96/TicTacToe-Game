@@ -19,7 +19,7 @@ namespace TicTacToe_Game
 
         private void CPUmove(object sender, EventArgs e)
         {
-            if(buttons.Count > 0)
+            if (buttons.Count > 0)
             {
                 int index = random.Next(buttons.Count);
                 buttons[index].Enabled = false;
@@ -47,15 +47,54 @@ namespace TicTacToe_Game
 
         private void RestarGame(object sender, EventArgs e)
         {
-            restartGame();  
+            restartGame();
         }
         private void CheckGame()
         {
+            if ((button1.Text == "X" && button2.Text == "X" && button3.Text == "X")
+                || (button4.Text == "X" && button5.Text == "X" && button6.Text == "X")
+                || (button7.Text == "X" && button8.Text == "X" && button9.Text == "X")
+                || (button1.Text == "X" && button4.Text == "X" && button7.Text == "X")
+                || (button2.Text == "X" && button5.Text == "X" && button8.Text == "X")
+                || (button3.Text == "X" && button6.Text == "X" && button9.Text == "X")
+                || (button1.Text == "X" && button5.Text == "X" && button9.Text == "X")
+                || (button3.Text == "X" && button5.Text == "X" && button7.Text == "X"))
+            {
+                CpuTimer.Stop();
+                MessageBox.Show("Player Wins", "The Winner is...");
+                playerWinCount++;
+                label1.Text = "Player Wins: " + playerWinCount;
+                restartGame();
+            }
+            else if ((button1.Text == "O" && button2.Text == "O" && button3.Text == "O")
+                || (button4.Text == "O" && button5.Text == "O" && button6.Text == "O")
+                || (button7.Text == "O" && button8.Text == "O" && button9.Text == "O")
+                || (button1.Text == "O" && button4.Text == "O" && button7.Text == "O")
+                || (button2.Text == "O" && button5.Text == "O" && button8.Text == "O")
+                || (button3.Text == "O" && button6.Text == "O" && button9.Text == "O")
+                || (button1.Text == "O" && button5.Text == "O" && button9.Text == "O")
+                || (button3.Text == "O" && button5.Text == "O" && button7.Text == "O"))
+            {
+                CpuTimer.Stop();
+                MessageBox.Show("CPU Wins", "The Winner is...");
+                CPUWinCount++;
+                label2.Text = "CPU Wins: " + CPUWinCount++;
+                restartGame();
+            }
+
+
+
+
+
+
+
+
+
 
         }
         private void restartGame()
         {
-            buttons = new List<Button> { button1, button2, button3, button4, button5, button6, button7, button8, button9};
+            buttons = new List<Button> { button1, button2, button3, button4, button5, button6, button7, button8, button9 };
             foreach (Button x in buttons)
             {
                 x.Enabled = true;

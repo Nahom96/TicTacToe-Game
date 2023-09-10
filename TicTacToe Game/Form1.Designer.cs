@@ -179,7 +179,7 @@
             // 
             // CpuTimer
             // 
-            CpuTimer.Interval = 1000;
+            CpuTimer.Interval = 500;
             CpuTimer.Tick += CPUmove;
             // 
             // Form1
